@@ -9,9 +9,7 @@ import Chatt from "./pages/chat";
 const App = (): JSX.Element => {
   return (
     <main>
-      <Toolbar />
-      <Chatt />
-      <Toolbar />
+      <Home />
     </main>
   );
 };

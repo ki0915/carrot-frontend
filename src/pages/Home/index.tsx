@@ -1,3 +1,5 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import React from "react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
@@ -12,6 +14,9 @@ const ImageTheme = {
 };
 
 const Home = (): JSX.Element => {
+  useEffect(() => {
+    alert("hello");
+  }, []);
   return (
     <Box>
       <List>
