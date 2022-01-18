@@ -13,10 +13,30 @@ const ImageTheme = {
   height: "150px",
 };
 
+type TradeItem = {
+  id: string;
+  image: string;
+  title: string;
+  location: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  price: number;
+  chat?: number;
+  interest?: number;
+};
+
 const Home = (): JSX.Element => {
+  const [tradeItems, setTradeItems] = useState<TradeItem[]>([]);
+  const readArticles = async () => {
+    const { data } = await axios.get("http://localhost:5000/trade/articles");
+    setTradeItems(data);
+  };
+ 
+
   useEffect(() => {
-    alert("hello");
+    readArticles();
   }, []);
+
   return (
     <Box>
       <List>
@@ -25,11 +45,7 @@ const Home = (): JSX.Element => {
             <ListItem key={item.id}>
               <ListItemButton>
                 <ListItemAvatar>
-                  <Avatar
-                    variant="rounded"
-                    src={item.imageUrl}
-                    sx={ImageTheme}
-                  />
+                  <Avatar variant="rounded" src={item.image} sx={ImageTheme} />
                 </ListItemAvatar>
                 <ListItemText primary={item.title} secondary={item.location} />
               </ListItemButton>

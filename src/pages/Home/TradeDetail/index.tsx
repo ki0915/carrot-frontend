@@ -11,14 +11,45 @@ import {
 } from "@mui/material";
 import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfied";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { CHAR } from "sequelize/dist";
+import TradeAppBar from "./TradeAppBar";
+
+type TradeItmes = {
+  id: string;
+  image: string;
+  title: string;
+  location: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+  price: number;
+  chat?: number;
+  interest?: number;
+  description: string;
+  isAdjustable: boolean;
+};
 
 const TradeDetail = (): JSX.Element => {
+  const [article, setArticle] = useState<TradeItmes>();
+  const getArticles = async () => {
+    const { data } = await axios.get("http://localhost:5000/trade/articles");
+    setArticle(data);
+  };
+
+  useEffect(() => {
+    getArticles();
+  }, []);
+
   return (
     <>
-      <Box padding="20px">
+      <Box paddingTop="20px">
         <Grid container>
           <Grid item xs={1}>
-            <Avatar src="이미지 주소" sx={{ width: 80, height: 80 }} />
+            <Avatar
+              src={"article && article.image"}
+              sx={{ width: 80, height: 80 }}
+            />
           </Grid>
           <Grid item xs={9}>
             <Grid container>
@@ -45,7 +76,13 @@ const TradeDetail = (): JSX.Element => {
                 />
               </Grid>
               <Grid item xs={4}>
-                <SentimentSatisfiedIcon fontSize="large" color="primary" />
+                <Box
+                  display="flex"
+                  justifyContent={"center"}
+                  alignItems={"center"}
+                >
+                  <SentimentSatisfiedIcon fontSize="large" color="primary" />
+                </Box>
               </Grid>
             </Grid>
           </Grid>
@@ -53,11 +90,16 @@ const TradeDetail = (): JSX.Element => {
       </Box>
       <Box>
         <hr color="#dddddd" />
-        <Typography variant="h4">제목</Typography>
+        <Typography variant="h4">{article && article.title}</Typography>
         <Box>
-          물건 팝니다.
-          <br />
-          아주 싸게 팝니다.
+          {article && article.description}
+          {article && (
+            <TradeAppBar
+              price={article.price}
+              isAdjustable={article.isAdjustable}
+              isInterest={true}
+            />
+          )}
         </Box>
       </Box>
       <AppBar

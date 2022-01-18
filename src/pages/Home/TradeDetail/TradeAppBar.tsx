@@ -18,6 +18,7 @@ type TradeType = {
   price: number;
   interest: boolean;
   Suggestion_possible: boolean;
+  isAdjustable: boolean;
 };
 
 const TradeAppBar = (App_intertype: TradeType): JSX.Element => {
