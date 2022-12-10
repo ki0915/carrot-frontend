@@ -4,14 +4,13 @@ import {
   Box,
   Grid,
   Typography,
-  LinearProgress,
   Toolbar,
   Button,
   TextField,
   Chip,
 } from "@mui/material";
 
-import { Avatar, ListItemAvatar, ListItemText } from "@mui/material";
+import { Avatar } from "@mui/material";
 import { IconButton } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { message } from "./data";

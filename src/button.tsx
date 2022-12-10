@@ -1,5 +1,4 @@
 import React from "react";
-import { useState, ChangeEvent } from "react";
 
 type ButtonType = {
   name: string;

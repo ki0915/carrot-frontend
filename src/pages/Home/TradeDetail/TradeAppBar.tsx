@@ -1,28 +1,16 @@
 import * as React from "react";
-import {
-  AppBar,
-  Avatar,
-  Box,
-  Grid,
-  Typography,
-  LinearProgress,
-  Toolbar,
-  Button,
-} from "@mui/material";
-import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfied";
+import { AppBar, Grid, Typography, Toolbar, Button } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import Favorite from "@mui/icons-material/Favorite";
 
 type TradeType = {
   price: number;
   interest: boolean;
-  Suggestion_possible: boolean;
   isAdjustable: boolean;
 };
 
 const TradeAppBar = (App_intertype: TradeType): JSX.Element => {
-  const { price, interest, Suggestion_possible } = App_intertype;
+  const { price, interest, isAdjustable } = App_intertype;
 
   return (
     <AppBar
@@ -58,7 +46,7 @@ const TradeAppBar = (App_intertype: TradeType): JSX.Element => {
               <Grid item xs={12}>
                 <Typography variant="subtitle2" color="#2b2b2b">
                   <strong>
-                    {Suggestion_possible ? "가격 제안가능" : "가격 제안 불가"}
+                    {isAdjustable ? "가격 제안가능" : "가격 제안 불가"}
                   </strong>
                 </Typography>
               </Grid>

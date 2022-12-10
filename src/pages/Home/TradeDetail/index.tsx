@@ -1,46 +1,10 @@
 import * as React from "react";
-import {
-  AppBar,
-  Avatar,
-  Box,
-  Grid,
-  Typography,
-  LinearProgress,
-  Toolbar,
-  Button,
-} from "@mui/material";
+import { Avatar, Box, Grid, Typography, LinearProgress } from "@mui/material";
 import SentimentSatisfiedIcon from "@mui/icons-material/SentimentSatisfied";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { CHAR } from "sequelize/dist";
 import TradeAppBar from "./TradeAppBar";
-
-type TradeItmes = {
-  id: string;
-  image: string;
-  title: string;
-  location: string;
-  createdAt?: Date;
-  updatedAt?: Date;
-  price: number;
-  chat?: number;
-  interest?: number;
-  description: string;
-  isAdjustable: boolean;
-};
+// eslint-disable-next-line
 
 const TradeDetail = (): JSX.Element => {
-  const [article, setArticle] = useState<TradeItmes>();
-  const getArticles = async () => {
-    const { data } = await axios.get("http://localhost:5000/trade/articles");
-    setArticle(data);
-  };
-
-  useEffect(() => {
-    getArticles();
-  }, []);
-
   return (
     <>
       <Box paddingTop="20px">
@@ -90,58 +54,14 @@ const TradeDetail = (): JSX.Element => {
       </Box>
       <Box>
         <hr color="#dddddd" />
-        <Typography variant="h4">{article && article.title}</Typography>
+        <Typography variant="h4">물건 팝니다</Typography>
         <Box>
-          {article && article.description}
-          {article && (
-            <TradeAppBar
-              price={article.price}
-              isAdjustable={article.isAdjustable}
-              isInterest={true}
-            />
-          )}
+          물건 팝니다.
+          <br />
+          아주 싸게 팝니다.
         </Box>
       </Box>
-      <AppBar
-        position="fixed"
-        color="primary"
-        sx={{ top: "auto", bottom: 0, backgroundColor: "#ffffff" }}
-      >
-        <Toolbar>
-          <Grid container>
-            <Grid
-              item
-              xs={1}
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                alignContent: "center",
-              }}
-            >
-              <FavoriteBorderIcon color="primary" fontSize="large" />
-            </Grid>
-            <Grid item xs={8}>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Typography variant="h5" color="#2b2b2b">
-                    <strong>30000원</strong>
-                  </Typography>
-                </Grid>
-                <Grid item xs={12}>
-                  <Typography variant="subtitle2" color="#2b2b2b">
-                    <strong>가격 제안하기</strong>
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={3} sx={{ display: "flex", alignItems: "center" }}>
-              <Button variant="contained" color="secondary" fullWidth>
-                채팅으로 거래하기
-              </Button>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
+      <TradeAppBar price={35000} isAdjustable={true} interest={false} />
     </>
   );
 };

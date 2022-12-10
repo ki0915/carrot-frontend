@@ -6,7 +6,6 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import { Avatar, ListItemAvatar, ListItemText } from "@mui/material";
-import { tradeItems } from "./data";
 
 const ImageTheme = {
   width: "150px",
@@ -31,7 +30,6 @@ const Home = (): JSX.Element => {
     const { data } = await axios.get("http://localhost:5000/trade/articles");
     setTradeItems(data);
   };
- 
 
   useEffect(() => {
     readArticles();
