@@ -15,8 +15,8 @@ React 기반 클라이언트입니다. API 서버는 [carrot-backend](https://gi
 
 ## 🖼 화면
 
-![거래 화면](https://raw.githubusercontent.com/ki0915/carrot-backend/main/docs/screen-trade.png)
-![채팅 화면](https://raw.githubusercontent.com/ki0915/carrot-backend/main/docs/screen-chat.png)
+![거래 화면](https://raw.githubusercontent.com/ki0915/carrot-backend/master/docs/screen-trade.png)
+![채팅 화면](https://raw.githubusercontent.com/ki0915/carrot-backend/master/docs/screen-chat.png)
 
 ## 🔧 개발하며 겪은 문제
 
